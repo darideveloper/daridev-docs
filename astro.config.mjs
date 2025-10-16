@@ -10,8 +10,7 @@ import catppuccin from "@catppuccin/starlight";
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Daridev Docs',
 			sidebar: [
 				{
 					label: 'Guides',
@@ -24,6 +23,17 @@ export default defineConfig({
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
 				},
+        {
+          label: 'Frontend',
+          items: [
+            { label: 'Container', slug: 'frontend/container' },
+          ],
+        },
+        {
+          label: 'Backend',
+          items: [
+          ],
+        },
 			],
       plugins: [catppuccin({
         dark: { flavor: "macchiato", accent: "sky" },
