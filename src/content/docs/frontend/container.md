@@ -72,3 +72,74 @@ import Card from "../ui/Card.astro";
     </div>
   </div>
 </section>
+```
+
+## Full Width Sections
+
+Podemos hacer secciones de ancho completo y aún así usar container para delimitar el contenido
+
+Ejemplo de uso: una sección que tiene que tener un color de fondo
+
+### Sección original con errores
+
+El fondo no cubre todo el ancho de la página
+
+```astro
+// src/components/sections/test.astro
+---
+import H2 from "../ui/H2";
+import ButtonLink from "../ui/ButtonLink";
+---
+
+<section class:list={["hero", "bg-secondary", "text-secondary-content", "py-24"]}>
+  <div class:list={["hero-content", "text-center"]}>
+    <div class:list={["max-w-xl"]}>
+      <H2 className="!text-white">
+        ¿Lista para empezar a sumar Gofitos?
+      </H2>
+      <p class:list={["py-6"]}>
+        Tu plaza está más cerca de lo que crees. Da el primer paso hoy mismo con
+        acceso completo a todas las herramientas.
+      </p>
+      <ButtonLink isSoft href="/#">
+        Empezar mi prueba gratis de 24 horas
+      </ButtonLink>
+    </div>
+  </div>
+</section>
+```
+
+![Sección original](../../../assets/container-original.webp)
+
+### Aplicando container
+
+El fondo ahora cobre todo el contenido, pero no se sobre sale del tamaño máximo
+
+```astro
+// src/components/sections/test.astro
+---
+import H2 from "../ui/H2";
+import ButtonLink from "../ui/ButtonLink";
+---
+
+<!-- Sección principal sin container: 'w-full' para ancho completo -->
+<section class:list={["w-full", "hero", "bg-secondary", "text-secondary-content", "py-24"]}>
+  <!-- Se usa 'container' en un div interno, para delimitar el contenido -->
+  <div class:list={["container", "hero-content", "text-center"]}>
+    <div class:list={["max-w-xl"]}>
+      <H2 className="!text-white">
+        ¿Lista para empezar a sumar Gofitos?
+      </H2>
+      <p class:list={["py-6"]}>
+        Tu plaza está más cerca de lo que crees. Da el primer paso hoy mismo con
+        acceso completo a todas las herramientas.
+      </p>
+      <ButtonLink isSoft href="/#">
+        Empezar mi prueba gratis de 24 horas
+      </ButtonLink>
+    </div>
+  </div>
+</section>
+```
+
+![Sección con container](../../../assets/container-full-width.webp)

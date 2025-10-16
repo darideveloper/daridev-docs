@@ -27,6 +27,7 @@ export default defineConfig({
           label: 'Frontend',
           items: [
             { label: 'Container', slug: 'frontend/container' },
+            { label: 'Components', slug: 'frontend/componentes' },
           ],
         },
         {
