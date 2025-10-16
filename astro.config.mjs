@@ -2,6 +2,10 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+// Theme
+import catppuccin from "@catppuccin/starlight";
+
+
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
@@ -21,6 +25,10 @@ export default defineConfig({
 					autogenerate: { directory: 'reference' },
 				},
 			],
+      plugins: [catppuccin({
+        dark: { flavor: "macchiato", accent: "sky" },
+        light: { flavor: "latte", accent: "sky" },
+      })],
 		}),
 	],
 });
