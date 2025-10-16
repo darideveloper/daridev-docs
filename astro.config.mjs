@@ -33,6 +33,7 @@ export default defineConfig({
         {
           label: 'Backend',
           items: [
+            { label: 'Deploy Django in Coolify', slug: 'backend/deploy-django-cooolify' },
           ],
         },
 			],
