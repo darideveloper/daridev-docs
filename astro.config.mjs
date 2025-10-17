@@ -28,12 +28,19 @@ export default defineConfig({
           items: [
             { label: 'Container', slug: 'frontend/container' },
             { label: 'Components', slug: 'frontend/componentes' },
+            { label: 'Deploy Astro to Coolify', slug: 'frontend/deploy-astro-coolify' },
           ],
         },
         {
           label: 'Backend',
           items: [
             { label: 'Deploy Django in Coolify', slug: 'backend/deploy-django-cooolify' },
+          ],
+        },
+        {
+          label: 'Coolify',
+          items: [
+            { label: 'Enable Auto Deploy in Coolify', slug: 'coolify/enable-auto-deploy' },
           ],
         },
 			],
