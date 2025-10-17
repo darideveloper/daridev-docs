@@ -1,46 +1,46 @@
 ---
 title: Container
-description: Como utilizar container de talwind en projectos frontend
+description: How to use container in frontend projects
 ---
 
-Usa container en el contenido principal de cada sección, para delimitar un ancho máximo. 
+Use container in the main content of each section, to delimit a maximum width. 
 
-En los ajustes del proyecto, la clase “container” podría ya tener pre cargadas algunas configuraciones globales, como padding y margin
+In the project settings, the "container" class could already have some global configurations, like padding and margin
 
-## Sección sin container 
+## Section without container 
 
-![Sección sin container](../../../assets/container-sin.webp)
+![Section without container](../../../assets/container-sin.webp)
 
-## Sección con container 
+## Section with container 
 
-El contenido tiene un ancho máximo, aun que la pantalla sea muy grande. 
+The content has a maximum width, even if the screen is very large. 
 
-También (si la clase ya está configurada) el contenido se centra (margin derecho e izquierdo automático)
+Also (if the class is already configured) the content is centered (automatic right and left margin)
 
-![Sección con container](../../../assets/container-con.webp)
+![Section with container](../../../assets/container-con.webp)
 
 <details>
-<summary>Código de ejemplo para la configuración global del container</summary>
+<summary>Example code for the global container configuration</summary>
 
-Código de ejemplo para la configuración global del container
+Example code for the global container configuration
 
-Código añadido a los estilos globales del proyecto (adicional a lo que tailwind nos ofrece defecto).
+Code added to the global project styles (additional to what tailwind offers by default).
 
-**No necesitas añadir esté código, la persona que cree el proyecto base se encargará de eso**
+**You don't need to add this code, the person who creates the base project will take care of it**
 
 ```css
 /*src/styles/global.css*/
 .container {
-  margin: 0 auto; /*centrar contenido*/
-  max-width: 1350px; /*ancho máximo*/
-  padding: 4rem 1rem; /*padding*/
+  margin: 0 auto; /*center content*/
+  max-width: 1350px; /*maximum width*/
+  padding: 4rem 1rem; /*padding around the content*/
 }
 ```
 
 </details>
 
 
-### Código con container
+### Code with container
 
 ```astro
 // src/components/sections/ejemplo.astro
@@ -48,7 +48,7 @@ Código añadido a los estilos globales del proyecto (adicional a lo que tailwin
 import Card from "../ui/Card.astro";
 ---
 
-<!-- Clase 'container' añadida al padre del contenido principal (la sección completa en este caso) -->
+<!-- 'container' class added to the parent of the main content (the section in this case) -->
 <section class:list={["container", "py-16", "md:py-24"]}>
   <div
     class:list={[
@@ -76,13 +76,13 @@ import Card from "../ui/Card.astro";
 
 ## Full Width Sections
 
-Podemos hacer secciones de ancho completo y aún así usar container para delimitar el contenido
+We can make full width sections and still use container to delimit the content
 
-Ejemplo de uso: una sección que tiene que tener un color de fondo
+Example usage: a section that has to have a background color
 
-### Sección original con errores
+### Original section with errors
 
-El fondo no cubre todo el ancho de la página
+The background does not cover the entire page width
 
 ```astro
 // src/components/sections/test.astro
@@ -111,9 +111,9 @@ import ButtonLink from "../ui/ButtonLink";
 
 ![Sección original](../../../assets/container-original.webp)
 
-### Aplicando container
+### Applying container
 
-El fondo ahora cobre todo el contenido, pero no se sobre sale del tamaño máximo
+The background now covers the entire content, but does not overflow the maximum size
 
 ```astro
 // src/components/sections/test.astro
@@ -122,9 +122,9 @@ import H2 from "../ui/H2";
 import ButtonLink from "../ui/ButtonLink";
 ---
 
-<!-- Sección principal sin container: 'w-full' para ancho completo -->
+<!-- Main section without container: 'w-full' for full width -->
 <section class:list={["w-full", "hero", "bg-secondary", "text-secondary-content", "py-24"]}>
-  <!-- Se usa 'container' en un div interno, para delimitar el contenido -->
+  <!-- 'container' class used inside a div, to delimit the content -->
   <div class:list={["container", "hero-content", "text-center"]}>
     <div class:list={["max-w-xl"]}>
       <H2 className="!text-white">
@@ -142,4 +142,4 @@ import ButtonLink from "../ui/ButtonLink";
 </section>
 ```
 
-![Sección con container](../../../assets/container-full-width.webp)
+![Section with container](../../../assets/container-full-width.webp)
