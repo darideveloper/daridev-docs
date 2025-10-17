@@ -7,33 +7,23 @@ description: Generalidades sobre los componentes frontend y prácticas del equip
 
 Los componentes deben usar camel case. Ejemplo:
 
-**✅ CardInfo.astro**
-
-**❌ cardInfo.astro**
-
-**❌ card-info.astro**
-
-**❌ card_info.astro**
-
-**❌ cardinfo.astro**
-
-**❌ CARDINFO.astro**
+* **✅ CardInfo.astro**
+* **❌ cardInfo.astro**
+* **❌ card-info.astro**
+* **❌ card_info.astro**
+* **❌ cardinfo.astro**
+* **❌ CARDINFO.astro**
 
 Las variantes, deben comenzar por la misma palabra, para su mejor organización y búsqueda
 
 Suponiendo que 3 tipos de botones, todos deben comenzar con la palabra “Button”
 
-**✅ ButtonLink.tsx**
-
-**✅ ButtonAction.tsx**
-
-**✅ ButtonSubmit.tsx**
-
-**❌ LinkButton.tsx**
-
-**❌ ActionButton.tsx**
-
-**❌ SubmitButton.tsx**
+* **✅ ButtonLink.tsx**
+* **✅ ButtonAction.tsx**
+* **✅ ButtonSubmit.tsx**
+* **❌ LinkButton.tsx**
+* **❌ ActionButton.tsx**
+* **❌ SubmitButton.tsx**
 
 ## Estatura de componentes en proyecto
 
