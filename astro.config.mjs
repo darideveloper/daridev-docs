@@ -27,7 +27,7 @@ export default defineConfig({
           label: 'Frontend',
           items: [
             { label: 'Container', slug: 'frontend/container' },
-            { label: 'Components', slug: 'frontend/componentes' },
+            { label: 'Components', slug: 'frontend/components' },
             { label: 'Deploy Astro to Coolify', slug: 'frontend/deploy-astro-coolify' },
           ],
         },
