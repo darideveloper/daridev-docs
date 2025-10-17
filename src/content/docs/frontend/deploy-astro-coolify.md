@@ -61,6 +61,11 @@ Go to "Environment Variables" tab inside the coolify app:
    1. Click in "Developer view"
    2. Setup all env variables from env file (copy and paste)
    3. Click in "Save All Environment Variables"
+   4. Add the following env variable
+
+```bash
+NIXPACKS_NIXPKGS=nodejs_20,npm-9_x
+```
    
 
 ## 6. Advanced settings in coolify
