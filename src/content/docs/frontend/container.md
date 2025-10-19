@@ -143,3 +143,47 @@ import ButtonLink from "../ui/ButtonLink";
 ```
 
 ![Section with container](../../../assets/container-full-width.webp)
+
+## Don't nest container inside other container
+
+Be careful the containers: don't nest container inside other container, because it will break the layout.
+
+```astro
+---
+// components/sections/Features.astro
+---
+
+<section class:list={["container", "py-16", "md:py-24"]}>
+  <div class:list={["grid", "grid-cols-1 md:grid-cols-2", "gap-8 md:gap-12", "items-center", "px-0 md:px-4"]}>
+    <div class:list={["flex", "justify-center", "md:justify-end"]}>
+      <img src="/doctor.png" class:list={["rounded-2xl"]} />
+    </div>
+  </div>
+</section>
+```
+
+
+```astro
+---
+// pages/index.astro
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Features from "../components/sections/Features.astro";
+---
+
+<Layout>
+
+  <!-- Here is a div with container class -->
+  <div class:list={["container", "mx-auto", "px-4", "py-12"]}>
+    <h1>Hello World</h1>
+
+    <!-- WRONG: this component already has a container class -->
+    <!-- Cannot be nested inside other container -->
+    <!-- <Features /> -->
+  </div>
+
+  <!-- Correct: no container class here -->
+  <Features />
+</Layout>
+```
