@@ -12,37 +12,22 @@ export default defineConfig({
 		starlight({
 			title: 'Daridev Docs',
 			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
         {
           label: 'Frontend',
-          items: [
-            { label: 'Container', slug: 'frontend/container' },
-            { label: 'Components', slug: 'frontend/components' },
-            { label: 'Deploy Astro to Coolify', slug: 'frontend/deploy-astro-coolify' },
-          ],
+          autogenerate: { directory: 'frontend' },
         },
         {
           label: 'Backend',
-          items: [
-            { label: 'Deploy Django in Coolify', slug: 'backend/deploy-django-cooolify' },
-          ],
+          autogenerate: { directory: 'backend' },
         },
         {
           label: 'Coolify',
-          items: [
-            { label: 'Enable Auto Deploy in Coolify', slug: 'coolify/enable-auto-deploy' },
-          ],
+          autogenerate: { directory: 'coolify' },
         },
+        {
+          label: 'Portfolio',
+          autogenerate: { directory: 'portfolio' },
+        }
 			],
       plugins: [catppuccin({
         dark: { flavor: "macchiato", accent: "sky" },
