@@ -219,7 +219,7 @@ cosnt { title, description, image } = Astro.props as Props;
 ### Section
 
 Each section component, should use the `section` tag to wrap the content of the section. Also, it should have `container` class, to delimit the content.
-Check more details about container in [Container](./container.md) page.
+Check more details about container in [Container](../container) page.
 Usually, we use components inside the sections using looop rendering, to display a list of items.
 
 ```astro
