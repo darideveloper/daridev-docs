@@ -11,8 +11,8 @@ We have a Django Dashboard wehere SEO experts can create and manage the blog pos
 
 ## 1. Get posts data
 
-1. Login in service dashboard: [https://servcies.darideveloper.com](https://servcies.darideveloper.com)
-2. Open [/admin/blog/post/?status__exact=done&q=&o=4](https://servcies.darideveloper.com/admin/blog/post/?status__exact=done&q=&o=4) (this link already has the filters applied to get the post ready to bu published)
+1. Login in service dashboard: [https://services.darideveloper.com](https://services.darideveloper.com)
+2. Open [/admin/blog/post/?status__exact=done&q=&o=4](https://services.darideveloper.com/admin/blog/post/?status__exact=done&q=&o=4) (this link already has the filters applied to get the post ready to bu published)
 3. Open the first post in the list
 
 ## 2. Create a new post in the portfolio website
