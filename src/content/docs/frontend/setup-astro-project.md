@@ -66,6 +66,8 @@ import '../styles/global.css';
 </style> -->
 ```
 
+> Read more about the full layout setup in [Layout](../layout)
+
 1. Check if working with a basic page `/test`
 
 ```astro
