@@ -14,7 +14,6 @@ Also, we use typescript for all the code.
 src/
 ├── components/                 # Reusable UI components
 │   ├── atoms/                  # Smallest, reusable pieces (Button, Input)
-│   ├── layouts/                # UI-level layouts (MainLayout, DashboardLayout)
 │   ├── molecules/              # Groups of atoms (Form, Card, NavbarItem)
 │   └── organisms/              # Larger components (Header, Footer, HeroSection)
 │
@@ -49,7 +48,11 @@ src/
 ├── types/                      # Shared global TypeScript definitions
 │   └── user.ts                 # Example: User type definition
 │
-└── env.d.ts                    # Type declarations for environment variables
+─── env.d.ts                    # Type declarations for environment variables (at same level as src and public folders)
+─── .env                        # Environment variables (at same level as src and public folders)
+─── .env.production             # Production environment variables (at same level as src and public folders)
+─── .gitignore                   # Git ignore file (at same level as src and public folders)
+...
 ```
 
 ### Examples of components
@@ -118,15 +121,3 @@ const { title } = Astro.props;
   </body>
 </html>
 ```
-
-## Setup Tailwind & gloabl styles
-
-TODO
-
-## Setup DaisyUI
-
-TODO
-
-## Setup Playwright (for testing)
-
-TODO

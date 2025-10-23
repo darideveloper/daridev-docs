@@ -5,7 +5,7 @@ description: How to deploy Astro to Coolify
 
 ## 1. Update Package.json to use node 20
 
-For both (SSR and SSG), add this to Package.json, after 'dependencies' section:
+For both (SSR and SSG), add this to Package.json, after 'dependencies' section, if not already set:
 
 ```json
 {
@@ -61,7 +61,7 @@ Go to "Environment Variables" tab inside the coolify app:
    1. Click in "Developer view"
    2. Setup all env variables from env file (copy and paste)
    3. Click in "Save All Environment Variables"
-   4. Add the following env variable
+   4. Add the following env variable if not already set in your env files
 
 ```bash
 NIXPACKS_NIXPKGS=nodejs_20,npm-9_x
