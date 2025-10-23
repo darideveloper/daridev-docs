@@ -5,6 +5,8 @@ description: How to setup an Astro project with all the team tools and practices
 
 ## Follow the CLI wizard
 
+We will install Astro using the CLI wizard.
+
 More info in [Astro Docs](https://docs.astro.build/en/install-and-setup/).
 
 ```bash
@@ -18,6 +20,8 @@ npm create astro@latest
 ```
 
 ## Tailwind & global styles
+
+We will use talwind for styling.
 
 More info about how to setup Tailwind CSS v4 in Astro in [Astro Docs](https://docs.astro.build/en/guides/styling/#tailwind)
 
@@ -76,6 +80,8 @@ import Layout from "../layouts/Layout.astro";
 
 ## Install general Libraries & Frameworks
 
+There are some general libraries and frameworks that we will install in many projects.
+
 ```bash
 npm install clsx # to format classes / class names
 npx astro add react # to use daisyui components (accept all defaults)
@@ -102,6 +108,8 @@ Add this line at the end of you package.json file, after the "dependencies" sect
 
 ## Env variables
 
+We will use env files to store the environment variables for the project.
+
 1. Create two files: `.env` and `.env.production` and add the following variable (this if for production)
 
 ```bash
@@ -113,6 +121,10 @@ NIXPACKS_NIXPKGS=nodejs_20,npm-9_x
 // .env.production
 NIXPACKS_NIXPKGS=nodejs_20,npm-9_x
 ```
+
+## Project structure
+
+Create the required folders to follow our [Astro Design Pattern](../astro-design-pattern) and delete any astro sample component and assets.
 
 ## Styles
 
@@ -160,7 +172,7 @@ Example: data-theme="winter" -->
 
 ### Global styles
 
-Add this content **to the end** of the global css file:
+Add this content **to the end** of the global css file. This is a general configuration for the project:
 
 ```css
 /* src/styles/global.css */
@@ -304,7 +316,7 @@ Add a code like this at the end of the global css file, but using your css color
 
 #### Example of full css file
 
-This a full css file (without using daisyui).
+This a full css file (without daisyui).
 
 ```css
 @import 'tailwindcss';
@@ -385,9 +397,51 @@ h6 {
 }
 ```
 
-## Project structure
+## Zustand (optional: only if required)
 
-Create the required folders to follow our [Astro Design Pattern](../astro-design-pattern) and delete any astro sample component and assets.
+1. Install zustand
+
+```bash
+npm install zustand
+```
+
+2. Create a new store
+
+All stores should be at `/src/libs/stores/`
+Example: 
+
+```typescript
+// src/libs/stores/storeAuth.ts
+import { create } from 'zustand';
+
+export const useAuthStore = create<AuthStore>((set) => ({
+  isAuthenticated: false,
+  setIsAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
+}));
+```
+
+> Check in detail the file name and export const name, as reference
+
+3. Use inside react components
+
+```typescript
+// src/components/atoms/Button.tsx
+
+// Import the store
+import { useAuthStore } from '../../libs/stores/storeAuth';
+
+export default function Button() {
+  // Use store state and actions
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const setIsAuthenticated = useAuthStore(state => state.setIsAuthenticated);
+
+  return (
+    <button onClick={() => setIsAuthenticated(!isAuthenticated)}>
+      {isAuthenticated ? 'Logout' : 'Login'}
+    </button>
+  );
+}
+```
 
 ## 404 page
 
