@@ -43,29 +43,33 @@ Code added to the global project styles (additional to what tailwind offers by d
 ### Code with container
 
 ```astro
-// src/components/sections/ejemplo.astro
+// src/components/organisms/ejemplo.astro
 ---
-import Card from "../ui/Card.astro";
+// Components
+import Card from "../atoms/Card.astro";
+
+// Libs
+import clsx from 'clsx'
 ---
 
 <!-- 'container' class added to the parent of the main content (the section in this case) -->
-<section class:list={["container", "py-16", "md:py-24"]}>
+<section class={clsx("container", "py-16", "md:py-24")}>
   <div
-    class:list={[
+    class={clsx(
       "grid",
       "grid-cols-1 md:grid-cols-2",
       "gap-8 md:gap-12",
       "items-center",
       "px-0 md:px-4",
-    ]}
+    )}
   >
-    <div class:list={["flex", "justify-center", "md:justify-end"]}>
-      <img src="/doctor.png" class:list={["rounded-2xl"]} />
+    <div class={clsx("flex", "justify-center", "md:justify-end")}>
+      <img src="/doctor.png" class={clsx("rounded-2xl")} />
     </div>
 
-    <div class:list={["shadow-none"]}>
+    <div class={clsx("shadow-none")}>
       <Card title="Tu Objetivo es Nuestro Objetivo">
-        <p class:list={["mb-4", "text-neutral"]}>
+        <p class={clsx("mb-4", "text-neutral")}>
           ...
         </p>
       </Card>
@@ -73,6 +77,8 @@ import Card from "../ui/Card.astro";
   </div>
 </section>
 ```
+
+> Learn more about how to style the components in [Components](../components/#styling-tailwind-classes)
 
 ## Full Width Sections
 
@@ -85,19 +91,23 @@ Example usage: a section that has to have a background color
 The background does not cover the entire page width
 
 ```astro
-// src/components/sections/test.astro
+// src/components/organisms/test.astro
 ---
-import H2 from "../ui/H2";
-import ButtonLink from "../ui/ButtonLink";
+// Components
+import H2 from "../atoms/H2";
+import ButtonLink from "../atoms/ButtonLink";
+
+// Libs
+import clsx from 'clsx'
 ---
 
-<section class:list={["hero", "bg-secondary", "text-secondary-content", "py-24"]}>
-  <div class:list={["hero-content", "text-center"]}>
-    <div class:list={["max-w-xl"]}>
+<section class={clsx("hero", "bg-secondary", "text-secondary-content", "py-24")}>
+  <div class={clsx("hero-content", "text-center")}>
+    <div class={clsx("max-w-xl")}>
       <H2 className="!text-white">
         ¿Lista para empezar a sumar Gofitos?
       </H2>
-      <p class:list={["py-6"]}>
+      <p class={clsx("py-6")}>
         Tu plaza está más cerca de lo que crees. Da el primer paso hoy mismo con
         acceso completo a todas las herramientas.
       </p>
@@ -116,21 +126,25 @@ import ButtonLink from "../ui/ButtonLink";
 The background now covers the entire content, but does not overflow the maximum size
 
 ```astro
-// src/components/sections/test.astro
+// src/components/organisms/test.astro
 ---
-import H2 from "../ui/H2";
-import ButtonLink from "../ui/ButtonLink";
+// Components
+import H2 from "../atoms/H2";
+import ButtonLink from "../atoms/ButtonLink";
+
+// Libs
+import clsx from 'clsx'
 ---
 
 <!-- Main section without container: 'w-full' for full width -->
-<section class:list={["w-full", "hero", "bg-secondary", "text-secondary-content", "py-24"]}>
+<section class={clsx("w-full", "hero", "bg-secondary", "text-secondary-content", "py-24")}>
   <!-- 'container' class used inside a div, to delimit the content -->
-  <div class:list={["container", "hero-content", "text-center"]}>
-    <div class:list={["max-w-xl"]}>
+  <div class={clsx("container", "hero-content", "text-center")}>
+    <div class={clsx("max-w-xl")}>
       <H2 className="!text-white">
         ¿Lista para empezar a sumar Gofitos?
       </H2>
-      <p class:list={["py-6"]}>
+      <p class={clsx("py-6")}>
         Tu plaza está más cerca de lo que crees. Da el primer paso hoy mismo con
         acceso completo a todas las herramientas.
       </p>
@@ -150,13 +164,16 @@ Be careful the containers: don't nest container inside other container, because 
 
 ```astro
 ---
-// components/sections/Features.astro
+// components/organisms/Features.astro
+
+// Libs
+import clsx from 'clsx'
 ---
 
-<section class:list={["container", "py-16", "md:py-24"]}>
-  <div class:list={["grid", "grid-cols-1 md:grid-cols-2", "gap-8 md:gap-12", "items-center", "px-0 md:px-4"]}>
-    <div class:list={["flex", "justify-center", "md:justify-end"]}>
-      <img src="/doctor.png" class:list={["rounded-2xl"]} />
+<section class={clsx("container", "py-16", "md:py-24")}>
+  <div class={clsx("grid", "grid-cols-1 md:grid-cols-2", "gap-8 md:gap-12", "items-center", "px-0 md:px-4")}>
+    <div class={clsx("flex", "justify-center", "md:justify-end")}>
+      <img src="/doctor.png" class={clsx("rounded-2xl")} />
     </div>
   </div>
 </section>
@@ -169,13 +186,16 @@ Be careful the containers: don't nest container inside other container, because 
 
 // Components
 import Layout from "../layouts/Layout.astro";
-import Features from "../components/sections/Features.astro";
+import Features from "../components/organisms/Features.astro";
+
+// Libs
+import clsx from 'clsx'
 ---
 
 <Layout>
 
   <!-- Here is a div with container class -->
-  <div class:list={["container", "mx-auto", "px-4", "py-12"]}>
+  <div class={clsx("container", "mx-auto", "px-4", "py-12")}>
     <h1>Hello World</h1>
 
     <!-- WRONG: this component already has a container class -->

@@ -60,33 +60,68 @@ src/
 ```astro
 ---
 //src/components/atoms/Button.astro
+
+// Libs
+import clsx from 'clsx'
+
+// Props
 const { text = "Click" } = Astro.props;
 ---
-<button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+<button
+  class={clsx(
+    'px-4',
+    'py-2',
+    'bg-blue-600 hover:bg-blue-700',
+    'text-white',
+    'rounded-lg'
+  )}
+>
   {text}
 </button>
+
 ```
 
 ```astro
 ---
 // src/components/molecules/Card.astro
+
+// Libs
+import clsx from 'clsx'
+
+// Components
 import Button from "../atoms/Button.astro";
+
+// Props
 const { title, text } = Astro.props;
 ---
-<div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-  <h2 class="text-lg font-semibold mb-2">{title}</h2>
-  <p class="text-gray-600 mb-3">{text}</p>
-  <Button text="Learn more" />
+<div
+  class={clsx(
+    'p-4',
+    'bg-white',
+    'rounded-xl',
+    'shadow-sm',
+    'border',
+    'border-gray-100'
+  )}
+>
+  <h2 class={clsx('text-lg', 'font-semibold', 'mb-2')}>{title}</h2>
+  <p class={clsx('text-gray-600', 'mb-3')}>{text}</p>
+  <Button text='Learn more' />
 </div>
+
 ```
 
 ```astro
 ---
 // src/components/organisms/Header.astro
+
+// Libs
+import clsx from 'clsx'
 ---
-<header class="bg-blue-600 text-white py-4 px-6">
-  <h1 class="text-xl font-bold">My Astro Site</h1>
+<header class={clsx('bg-blue-600', 'text-white', 'py-4', 'px-6')}>
+  <h1 class={clsx('text-xl', 'font-bold')}>My Astro Site</h1>
 </header>
+
 ```
 
 
@@ -94,14 +129,11 @@ const { title, text } = Astro.props;
 ---
 // src/pages/index.astro
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/organisms/Header.astro";
 import Card from "../components/molecules/Card.astro";
 ---
+<!-- Header, Footer and html main tag, already included in the layout -->
 <Layout title="Home">
-  <Header />
-  <main class="p-6 grid gap-4">
-    <Card title="Hello Astro" text="This is a simple card." />
-  </main>
+  <Card title="Hello Astro" text="This is a simple card." />
 </Layout>
 ```
 
@@ -116,8 +148,16 @@ const { title } = Astro.props;
     <meta charset="utf-8" />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-gray-50 text-gray-900">
-    <slot />
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
 ```
+
+> Learn more about the layout in [Layout](../layout)
+
+> Learn more about the components in [Components](../components)
