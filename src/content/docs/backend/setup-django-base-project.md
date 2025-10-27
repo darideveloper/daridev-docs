@@ -4,12 +4,7 @@ description: Set Up Guide to start a Django project from base project repo
 ---
 
 ## 1. Clone repository
-
 ```bash
-#
-# NOTE: YOU CAN FIN THIS REPOSITORY AT: https://github.com/darideveloper/django-base
-#
-
 # Use git clone on bash terminal to clone repository
 git clone https://github.com/darideveloper/django-base.git
 
@@ -17,35 +12,40 @@ git clone https://github.com/darideveloper/django-base.git
 
 ## 2. Set Up Environment
 
-On root create .env file, it only needs to content this:
+On root you'll find .env.example and .env.dev.example files, you can use them as template to create your own environment files, just remove .example from its name and fill the values.
+
+## 3. Create virtual environment
 
 ```bash
-#
-# NOTE: YOU MUST DECIDE BETWEEN DEV OR PROD BASED ON THE ENVIRONMENT YOUR TESTING
-#
-
-ENV=DEV
-
+python -m venv venv
 ```
 
-## 3. Create environment files
+Activate virtual environment (on windows)
+```bash
+venv\Scripts\activate
+```
 
-In order to be able to select an environment file
+Activate virtual environment (on linux)
+```bash
+source venv/bin/activate
+```
 
-On root create .env.dev file, it will content something like this:
+Deactivate virtual environment
+```bash
+deactivate
+```
+
+## 4. Install dependencies
 
 ```bash
-#
-# NOTE: THIS FILE CONTENT MAY VARY BASED ON THE PROJECT REQUIREMENTS
-#
-
-
-
+pip install -r requirements.txt
 ```
 
-## 4. Create postgre database
+## 5. Create postgre database
 
-Access to postgres on terminal
+You can create your database from pgadmin or psql. 
+
+In case you want to use psql, access to postgres on terminal
 
 ```bash
 psql postgres
@@ -57,19 +57,24 @@ CREATE DATABASE database_name;
 ```
 
 
-## Database connection
-### 5.1 Update db connection in .env.dev
+## 6. Database connection
+
+### 6.1 Update db connection in .env.dev
 
 Update database credentials on .env.dev files
-```bash
+
+```
+// .env.dev
+...
 DB_HOST=server ip
 DB_PORT=db free port
 DB_NAME=db name
 DB_USER=db username
 DB_PASSWORD=db password
+...
 ```
 
-### 5.2 Run migrations and create superuser to check connection
+### 6.2 Run migrations and create superuser to check connection
 
 Run migrations and create superuser
 ```bash
@@ -82,3 +87,12 @@ Run project in local to check admin login
 python manage.py runserver
 ```
 Enter to localhost:8000/admin and access with admin credentials
+
+## 7. Fixtures
+
+In case you need to import fixtures, you can use the following command:
+```bash
+python manage.py loaddata
+```
+
+> NOTE: YOU CAN FIN THIS REPOSITORY AT: https://github.com/darideveloper/django-base
