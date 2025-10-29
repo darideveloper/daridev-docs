@@ -49,7 +49,7 @@ Code added to the global project styles (additional to what tailwind offers by d
 import Card from "../atoms/Card.astro";
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 
 <!-- 'container' class added to the parent of the main content (the section in this case) -->
@@ -98,7 +98,7 @@ import H2 from "../atoms/H2";
 import ButtonLink from "../atoms/ButtonLink";
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 
 <section class={clsx("hero", "bg-secondary", "text-secondary-content", "py-24")}>
@@ -133,7 +133,7 @@ import H2 from "../atoms/H2";
 import ButtonLink from "../atoms/ButtonLink";
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 
 <!-- Main section without container: 'w-full' for full width -->
@@ -167,7 +167,7 @@ Be careful the containers: don't nest container inside other container, because 
 // components/organisms/Features.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 
 <section class={clsx("container", "py-16", "md:py-24")}>
@@ -189,7 +189,7 @@ import Layout from "../layouts/Layout.astro";
 import Features from "../components/organisms/Features.astro";
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 
 <Layout>

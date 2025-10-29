@@ -77,7 +77,7 @@ import '../styles/global.css';
 import Layout from "../layouts/Layout.astro";
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 <Layout title="Test">
   <h1 class={clsx("text-3xl font-bold underline")}>Test</h1>

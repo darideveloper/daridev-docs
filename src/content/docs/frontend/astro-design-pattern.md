@@ -62,7 +62,7 @@ src/
 //src/components/atoms/Button.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Props
 const { text = "Click" } = Astro.props;
@@ -86,7 +86,7 @@ const { text = "Click" } = Astro.props;
 // src/components/molecules/Card.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Components
 import Button from "../atoms/Button.astro";
@@ -116,7 +116,7 @@ const { title, text } = Astro.props;
 // src/components/organisms/Header.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 <header class={clsx('bg-blue-600', 'text-white', 'py-4', 'px-6')}>
   <h1 class={clsx('text-xl', 'font-bold')}>My Astro Site</h1>

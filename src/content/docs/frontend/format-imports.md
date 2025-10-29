@@ -114,7 +114,7 @@ type Testimonial = {
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules'
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 import TestimonialCard from '../molecules/TestimonialCard'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -191,7 +191,7 @@ export default function Testimonials
 // /src/components/organisms/Testimonials.tsx
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Components
 import { Swiper, SwiperSlide } from 'swiper/react'

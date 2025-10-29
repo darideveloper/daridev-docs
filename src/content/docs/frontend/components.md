@@ -68,7 +68,7 @@ We can import it at the top of the component, and apply the classes to the compo
 // src/components/atoms/Button.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 <article class={clsx("px-4", "py-2", "bg-blue-600", "hover:bg-blue-700", "text-white", "rounded-lg", "md:px-8", "md:py-4", "md:bg-red-600")} />
 ```
@@ -82,7 +82,7 @@ After that, we can easy format the code with astro, to make it more readable
 // src/components/atoms/Button.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 <article
   class={clsx(
@@ -130,7 +130,7 @@ Example: we have the same react and astro components, and both gets the classNam
 // src/components/atoms/ButtonAstro.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Props
 interface Props {
@@ -146,7 +146,7 @@ const { className } = Astro.props as Props;
 // src/components/atoms/ButtonReact.tsx
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Props
 interface Props {
@@ -168,7 +168,7 @@ Inside a parent component, we can use the `className` prop to style the componen
 // src/components/molecules/Card.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Components
 import ButtonAstro from '../atoms/ButtonAstro.astro'
@@ -191,7 +191,7 @@ Continue with the example of the previous section:
 // src/components/molecules/Card.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Components
 import ButtonAstro from '../atoms/ButtonAstro.astro'
@@ -230,7 +230,7 @@ Inside the header tag, we can use the `nav` tag to wrap the navigation content.
 // components/organisms/Header.tsx
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Components
 import ButtonLink from '../atoms/ButtonLink.astro'
@@ -285,7 +285,7 @@ Inside the footer tag, we can also use the `nav` tag to wrap the navigation cont
 // components/organisms/Footer.tsx
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Components
 import ButtonLink from '../atoms/ButtonLink'
@@ -365,7 +365,7 @@ Usually, we use components inside the sections using loop rendering, to display 
 // components/organisms/About.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 
 // Components
 import Card from "../molecules/Card.astro";
@@ -428,7 +428,7 @@ Usually, we use the aside tag to wrap the content of the sidebar (like a dahsboa
 // components/organisms/Sidebar.astro
 
 // Libs
-import clsx from 'clsx'
+import { clsx } from 'clsx'
 ---
 
 <!-- Aside tag and container -->
