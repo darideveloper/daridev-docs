@@ -101,7 +101,7 @@ node dist/server/entry.mjs
 
 ```bash
 # Start Command
-node node ./dist/server/entry.mjs
+node ./dist/server/entry.mjs
 ```
 
 2. Set "Ports Exposes" to "3000"
