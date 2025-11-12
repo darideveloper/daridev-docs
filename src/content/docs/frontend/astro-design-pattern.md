@@ -3,6 +3,9 @@ title: Astro Design Pattern
 description: Our design pattern for building Astro websites
 ---
 
+
+Learn more about how and when to use react components or astro components in [Less React as Possible](../less-react-as-possible)
+
 ## Context
 
 We will use the following design pattern for building Astro websites (component could be astro or react).
