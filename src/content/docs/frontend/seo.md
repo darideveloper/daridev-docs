@@ -120,6 +120,22 @@ const ogType = ogTypeMap[jsonType as keyof typeof ogTypeMap] || "website";
 
 As you can see, this component auto renders the main metadata tags: vanilla html tags, open graph tags, twitter tags, json ld and sitemap.
 
+## Constants
+
+Like in the last component, if you need fixed data, you can use the constants file.
+Example:
+```ts
+// src/libs/constants/contact.ts
+export const email = 'contact@socialia.com'
+export const socialNetworks = [
+  {
+    name: 'Facebook',
+    link: 'https://www.facebook.com/socialia',
+  },
+]
+export const googleMapsLink = 'https://www.google.com/maps/place/Socialia'
+```
+
 ## PageSeo component
 
 We can extend the base component to create a page seo component, or blog post seo component, etc.
@@ -129,25 +145,37 @@ Also we can use the `src/libs/constants` to reuse data between components and se
 
 Each specific json data change for the business or project.
 
-```astro
+```ts
 ---
-src/components/utils/PageSEO.astro
+// src/components/utils/PageSEO.astro
 // Components
 import BaseSEO from './base/BaseSEO.astro'
 
-// Data (also used in components)
+// example of data (reused from components)
 import { plansData } from '../../libs/constants/plans'
 import { heroTitle, heroDescription } from '../../libs/constants/hero'
 
-// Reas props
+// Read props
 interface Props {
   currentPage: string // Current page
+  pageDescription: string // Description
+  extraKeywords?: string // Extra keywords
 }
-const { currentPage } = Astro.props as Props
+const {
+  currentPage,
+  pageDescription,
+  extraKeywords = '',
+} = Astro.props as Props
 
 // Environment variables
 const domain = import.meta.env.VITE_BASE_URL
 
+// Description and keywords
+const defaultDescription = `${heroTitle} ${heroDescription}`
+const defaultKeywords =
+  'trabajo social canarias, oposiciones trabajo social canarias, temario trabajo social, casos prácticos trabajo social, estudio trabajo social, preparación oposiciones trabajo social, examen trabajo social canarias, temario canario trabajo social, generador casos prácticos IA, tests trabajo social, ejercicios oposiciones, preguntas trabajo social, recursos trabajo social canarias, preparar oposiciones, convocatorias trabajo social, plaza trabajo social canarias'
+const description = pageDescription || defaultDescription
+const keywords = `${defaultKeywords}, ${extraKeywords}`
 
 // addressElems = {
 //   streetAddress: "Cto. Colonias 118",
@@ -177,8 +205,8 @@ const domain = import.meta.env.VITE_BASE_URL
 
 // Extra JSON
 const extraJson = {
-  // Price 
-  priceRange: '$$',
+  // Price
+  priceRange: '€€',
 
   // Contact
   // telephone: phoneUnformatted,
@@ -193,15 +221,20 @@ const extraJson = {
       '@type': 'Offer',
       name: plan.name,
       description: plan.description,
-      url: `${domain}/`,
+      url: `${domain}/pricing`,
+      priceCurrency: 'EUR',
+      price: plan.price,
+      availability: 'https://schema.org/InStock',
+      category: 'Servicio de Preparación de Oposiciones',
     })),
   ],
 
   // Founder
   foundingDate: '2025',
   founder: {
-    '@type': 'Company',
+    '@type': 'Organization',
     name: 'Socialia',
+    description: 'Plataforma de preparación de oposiciones de Trabajo Social en Canarias',
   },
 
   // rating
@@ -210,6 +243,9 @@ const extraJson = {
     ratingValue: '5.0',
     reviewCount: '75',
   },
+
+  // Keywords adicionales para el JSON-LD
+  keywords: 'trabajo social canarias, oposiciones trabajo social, preparación oposiciones, casos prácticos trabajo social, temario canario',
 
   // // Location
   // address: {
@@ -228,37 +264,95 @@ const extraJson = {
   currentPage={currentPage}
   jsonType='EducationalOrganization'
   extraJson={extraJson}
-  baseDescription=`${heroTitle} ${heroDescription}`
-  baseKeywords='socialia, trabajo social, canarias, oposiciones, estudiar, examenes, conocimiento, practica, ia, generador de casos, generador de tests, generador de temas, generador de ejercicios, generador de preguntas, generador de respuestas, generador de examenes, generador de tests, generador de temas, generador de ejercicios, generador de preguntas, generador de respuestas'
+  description={description}
+  keywords={keywords}
+  author='Socialia Team'
 />
 ```
+
+## Using the component in a page
 
 After create the component, be sure to import and use it in any page (or the required scope, like using the PostSEO component in each blog post page)
 
 ```astro
 ---
 // src/pages/about.astro
+// Fonts
+import '@fontsource-variable/inter'
+import '@fontsource/belleza'
+
+// Styles
+import '../styles/global.css'
+
+// Components
+import Header from '../components/organisms/Header'
+import Footer from '../components/organisms/Footer.astro'
+---
+
+<!doctype html>
+<html
+  lang='en'
+  data-theme='winter'
+>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
+    <!-- SEO Slot: dynamic seo in all pages -->
+    <slot name='seo' />
+  </head>
+  <body class:list={['!bg-base-200']}>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+```
+
+And finally, in the page, we can use the SEO component to set the metadata for the page.
+
+```astro
+---
 // Layout
 import Layout from '../layouts/Layout.astro'
 
 // Components
-import HeroAbout from '../components/organisms/HeroAbout.astro'
-import BannerFeatures from '../components/organisms/BannerFeatures.astro'
-import AboutGofitos from '../components/organisms/AboutGofitos.astro'
-import Goal from '../components/organisms/Goal.astro'
-import BannerAboutFooter from '../components/organisms/BannerAboutFooter.astro'
+import HeroHome from '../components/organisms/HeroHome.astro'
+import InfoCards from '../components/organisms/InfoCards.astro'
+import Features from '../components/organisms/Features.astro'
+import PricingCards from '../components/organisms/PricingCards.astro'
+import Testimonials from '../components/organisms/Testimonials'
 
 // Utils components
 import PageSEO from '../components/utils/PageSEO.astro'
 ---
 
 <Layout>
-  <PageSEO currentPage='about' />
-  <HeroAbout />
-  <BannerFeatures />
-  <AboutGofitos />
-  <Goal />
-  <BannerAboutFooter />
+  <!-- SEO component with custom props for the page -->
+  <PageSEO
+    slot="seo"
+    currentPage='Prepara tus Oposiciones de Trabajo Social en Canarias'
+    pageDescription='Plataforma especializada en preparación de oposiciones de Trabajo Social en Canarias. Temario 100% canario, casos prácticos ilimitados generados por IA y herramientas avanzadas para conseguir tu plaza.'
+    extraKeywords='preparación oposiciones trabajo social canarias, temario trabajo social canarias, casos prácticos trabajo social, estudio trabajo social online, plataforma estudio oposiciones'
+  />
+  <HeroHome />
+  <InfoCards />
+  <Features />
+  <PricingCards />
+  <Testimonials client:load />
 </Layout>
 ```
 
