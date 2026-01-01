@@ -23,11 +23,8 @@ src/
 ├── content/                    # Markdown / CMS collections
 │   └── blog/
 │
-├── features/                   # Business or app-specific modules
-│   ├── auth/                   # Login, register, logout, session
-│   ├── blog/                   # Posts, categories, comments
-│   ├── contact/                # Contact form logic and components
-│   └── dashboard/              # Protected UI sections
+├── assets/                     # Folder for static assets
+│   └── images/                 # Images to be rendered /optimized by astro
 │
 ├── layouts/                    # Astro page-level layouts
 │   ├── DashboardLayout.astro   # Layout for dashboard or admin pages
