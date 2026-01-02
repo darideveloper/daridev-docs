@@ -71,7 +71,7 @@ const { text = "Click" } = Astro.props;
   class={clsx(
     'px-4',
     'py-2',
-    'bg-blue-600 hover:bg-blue-700',
+    'bg-blue-600 hover:bg-blue-700', 
     'text-white',
     'rounded-lg'
   )}
@@ -105,7 +105,7 @@ const { title, text } = Astro.props;
   )}
 >
   <h2 class={clsx('text-lg', 'font-semibold', 'mb-2')}>{title}</h2>
-  <p class={clsx('text-gray-600', 'mb-3')}>{text}</p>
+  <p class={clsx('text-gray-600', 'mb-3')}>{text}</p> 
   <Button text='Learn more' />
 </div>
 

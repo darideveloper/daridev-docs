@@ -3,6 +3,8 @@ title: Setup Astro Project
 description: How to setup an Astro project with all the team tools and practices
 ---
 
+# TODO: add multi lang always
+
 ## Follow the CLI wizard
 
 We will install Astro using the CLI wizard.

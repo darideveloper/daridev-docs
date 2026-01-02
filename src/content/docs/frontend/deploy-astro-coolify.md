@@ -59,11 +59,12 @@ npm run build
 
 Go to "Environment Variables" tab inside the coolify app:
    1. Click in "Developer view"
-   2. Setup all env variables from env file (copy and paste)
+   2. Setup all env variables from env file (copy and paste) in both: "Production Environment Variables" and "Preview Deployments Environment Variables"
    3. Click in "Save All Environment Variables"
    4. Add the following env variable if not already set in your env files
 
 ```bash
+NIXPACKS_NODE_VERSION=20
 NIXPACKS_NIXPKGS=nodejs_20,npm-9_x
 ```
    
@@ -111,9 +112,18 @@ node ./dist/server/entry.mjs
 
 Follow this steps for **static site generation** deployment *only*.
 
-TODO
+### 8.1. Update General settings in coolify
 
-## 10. Enable auto deploy
+1. Setup the follosing start command in coolify "General" tab
+
+```bash
+# Start Command
+npm run preview
+```
+
+2. Press "Enter" at last field to save changes
+
+## 9. Enable auto deploy
 
 Follow this steps to enable auto deploy with coolify webhooks:
 
